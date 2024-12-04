@@ -10,8 +10,8 @@ import java.util.regex.Pattern;
 public class MullItOver {
 
   public static void main(String[] args) {
-    String input = readInput();
-    String rootRegex =  "mul\\(\\d+,\\d+\\)";
+    String input = readInput("input3.txt");
+    String rootRegex = "mul\\(\\d+,\\d+\\)";
     String numberRegex = "[^\\d]+";
 
     long sum1 = solvePart1(input, rootRegex, numberRegex);
@@ -19,8 +19,6 @@ public class MullItOver {
 
     long sum2 = solvePart2(input, rootRegex, numberRegex);
     System.out.println("Part two sum = " + sum2);
-
-
   }
 
   private static long solvePart1(String input, String rootRegex, String numberRegex) {
@@ -29,8 +27,8 @@ public class MullItOver {
     Matcher rootMatcher = rootPattern.matcher(input);
 
     while (rootMatcher.find()) {
-        String part = rootMatcher.group();
-        sum += getProduct(numberRegex, part);
+      String part = rootMatcher.group();
+      sum += getProduct(numberRegex, part);
     }
 
     return sum;
@@ -50,17 +48,19 @@ public class MullItOver {
       int endIndex = rootMatcher.end() - 1;
       int startIndex = rootMatcher.start();
 
-      String subString = input.substring(lastIndex +1, startIndex);
+      String subString = input.substring(lastIndex + 1, startIndex);
       int lastIndexOfDo = subString.lastIndexOf("do()");
       int lastIndexOfDont = subString.lastIndexOf("don't()");
 
-      if(lastIndexOfDont > lastIndexOfDo)
+      if (lastIndexOfDont > lastIndexOfDo) {
         enabled = false;
-      else if(lastIndexOfDo > lastIndexOfDont)
+      } else if (lastIndexOfDo > lastIndexOfDont) {
         enabled = true;
+      }
 
-      if(enabled)
+      if (enabled) {
         sum += getProduct(numberRegex, part);
+      }
 
       lastIndex = endIndex;
     }
@@ -75,14 +75,13 @@ public class MullItOver {
     int num2 = Integer.parseInt(numbers[2]);
 
     //System.out.println("num1 = " + num1 + " , num2 = " + num2);
-    long product = num1 * num2;
-    return product;
+    return num1 * num2;
   }
 
-  private static String readInput() {
+  private static String readInput(String file) {
     List<String> lines = null;
     try {
-      lines = Files.readAllLines(Paths.get("input3.txt"));
+      lines = Files.readAllLines(Paths.get(file));
     } catch (IOException e) {
       e.printStackTrace();
     }
