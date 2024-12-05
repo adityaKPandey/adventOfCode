@@ -114,18 +114,12 @@ public class CeresSearch {
         row--;
         col++;
       }
-
     }
-
     return true;
   }
 
   private static boolean checkIfPositionOutOfBounds(char[][] input, int row, int col) {
-    if (col < 0 || col >= input[0].length || row < 0 || row >= input.length) {
-      return true;
-    }
-
-    return false;
+    return  (col < 0 || col >= input[0].length || row < 0 || row >= input.length);
   }
 
 
