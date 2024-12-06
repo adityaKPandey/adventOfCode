@@ -9,11 +9,13 @@ public class CeresSearch {
 
   public static void main(String[] args) {
     char[][] input = readInput("input4.txt");
-    int count = searchWord1(input, "XMAS");
-    System.out.println("Count 1 = " + count);
+    int count1 = searchWord1(input, "XMAS");
+    System.out.println("Count part 1 = " + count1);
+
+    int count2 = searchWord2(input);
+    System.out.println("Count part 2 = " + count2);
   }
 
-  //2573
   private static int searchWord1(char[][] input, String wordToSearch) {
     int rows = input.length, cols = input[0].length, count = 0;
 
@@ -77,6 +79,27 @@ public class CeresSearch {
         }
       }
     }
+    return count;
+  }
+
+  private static int searchWord2(char[][] input) {
+    int rows = input.length, cols = input[0].length, count = 0;
+    for (int i = 1; i < rows - 1; i++) {
+      for (int j = 1; j < cols - 1; j++) {
+        if (input[i][j] == 'A') {
+          if (
+              ((input[i - 1][j - 1] == 'M' && input[i + 1][j + 1] == 'S')
+                  || (input[i - 1][j - 1] == 'S' && input[i + 1][j + 1] == 'M'))
+                  &&
+                  ((input[i - 1][j + 1] == 'M' && input[i + 1][j - 1] == 'S')
+                      || (input[i - 1][j + 1] == 'S' && input[i + 1][j - 1] == 'M'))
+          ) {
+            count++;
+          }
+        }
+      }
+    }
+
     return count;
   }
 
