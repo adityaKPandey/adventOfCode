@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class MullItOver {
 
   public static void main(String[] args) {
-    String input = readInput("input3.txt");
+    String input = readInput("src/resources/input/input3.txt");
     String rootRegex = "mul\\(\\d+,\\d+\\)";
     String numberRegex = "[^\\d]+";
 

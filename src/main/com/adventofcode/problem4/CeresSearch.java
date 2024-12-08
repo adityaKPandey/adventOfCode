@@ -8,7 +8,7 @@ import java.util.List;
 public class CeresSearch {
 
   public static void main(String[] args) {
-    char[][] input = readInput("input4.txt");
+    char[][] input = readInput("src/resources/input/input4.txt");
     int count1 = searchWord1(input, "XMAS");
     System.out.println("Count part 1 = " + count1);
 

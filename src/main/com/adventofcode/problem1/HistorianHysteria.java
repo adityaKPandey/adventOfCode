@@ -54,7 +54,7 @@ public class HistorianHysteria {
       Map<Integer, Integer> frequency2)  {
     List<String> lines = null;
     try {
-      lines = Files.readAllLines(Paths.get("input.txt"));
+      lines = Files.readAllLines(Paths.get("src/resources/input/input1.txt")); //src/resources/input/input1.txt
     } catch (IOException e) {
       e.printStackTrace();
     }
